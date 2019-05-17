@@ -5,12 +5,14 @@ const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
   mode: 'development',
+  // context: Path.resolve('../src'),
   devtool: 'cheap-eval-source-map',
   output: {
     chunkFilename: 'js/[name].chunk.js'
   },
   devServer: {
-    inline: true
+    inline: true,
+    contentBase: Path.join(__dirname,'../src/')
   },
   plugins: [
     new Webpack.DefinePlugin({
